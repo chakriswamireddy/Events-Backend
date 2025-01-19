@@ -6,7 +6,7 @@ const bcryptjs = require("bcryptjs");
 
 const express = require("express");
 const Event = require("../models/eventSchema");
-const User = require("../models/userSchema");
+const User = require("../models/UserSchema");
 
 const sendNotification = require("../messager/SendNotifcs");
 
