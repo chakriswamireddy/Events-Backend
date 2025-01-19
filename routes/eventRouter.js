@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
-const User = require("../models/userSchema");
 
 const express = require("express");
 const Event = require("../models/eventSchema");
+const User = require("../models/userSchema");
 
 const sendNotification = require("../messager/SendNotifcs");
 
