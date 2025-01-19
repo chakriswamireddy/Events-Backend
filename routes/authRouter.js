@@ -3,7 +3,8 @@ require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
-const User = require('../models/userSchema')
+
+const User = require('../models/userSchema.js')
 
 const JWT_SECRET = `${process.env.JWT_SECRET}`; 
 
@@ -69,13 +70,13 @@ router.post('/login', async (req, res) => {
 
   // sendNotification( 'manager_name','fornot@gmail.com',`Event Invitation`, 'Youve been invited for a new Event :${event_name}. organizer: ${manager_mail} ')
 
-  sendNotification('fromName','hello@gmail.com' , 'subject', 'message')
-  .then(() => {
-    console.log('Notification sent successfully.');     
-  })
-  .catch((error) => {
-    console.error('Error sending notification:', error);
-  });
+  // sendNotification('fromName','hello@gmail.com' , 'subject', 'message')
+  // .then(() => {
+  //   console.log('Notification sent successfully.');     
+  // })
+  // .catch((error) => {
+  //   console.error('Error sending notification:', error);
+  // });
   // clg
 
   // console.log(getList.subscriberId('fornot@gmail.com'))
