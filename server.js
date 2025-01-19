@@ -23,7 +23,7 @@ mongooseConnect()
 
 app.use('/api/event', eventRouter)
 
-  app.use( '/api/auth', router)
+  // app.use( '/api/auth', router)
 
 
 
