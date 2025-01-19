@@ -3,7 +3,6 @@ const {Novu} = require('@novu/node');
 
 const secretKey = `${process.env.NOVU_KEY}`
 
-console.log(secretKey)
 
 const novu = new Novu(secretKey);
 
