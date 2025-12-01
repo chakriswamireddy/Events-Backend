@@ -16,7 +16,26 @@ const sendNotification = async (fromName, toEmail,subj,msg) => {
 console.log(secretKey)
   const sId = await getSubscriberId(toEmail);
 
-  console.log(sId);
+ console.log("👤 Resolved Subscriber ID:", sId);
+  const payload = {
+      subject: subj,
+      body: `From ${fromName}, ${msg}`,
+      primaryActionLabel: "Ok",
+      secondaryActionLabel: "✅",
+    };
+
+    console.log("📦 Final Payload to Novu:");
+    console.log(JSON.stringify(payload, null, 2));
+
+    console.log("🚀 Triggering workflow: onboarding-demo-workflow");
+
+    await novu.trigger("onboarding-demo-workflow", {
+      to: { subscriberId: sId },
+      payload
+    });
+
+    console.log("✅ Notification triggered successfully!");
+
 
   // const notifications   = await novu.subscribers.getNotifications('678cbe0b155d5c102cac805b');
   // console.log(notifications);
@@ -25,27 +44,27 @@ console.log(secretKey)
 // console.log(subscriber);
 
   
-    await novu.trigger("onboarding-demo-workflow", {
-    to: {
-      subscriberId: sId ,
-    },
-    payload: {
-      // subject: subj, // Replace {{payload.subject}} with this value
-      // body: `From ${fromName}: \n ${msg}`, // Replace {{payload.body}} with this value
-      // primaryActionLabel: "Take Action", // Example value
-      // secondaryActionLabel: "Ignore", // Example value
+  //   await novu.trigger("onboarding-demo-workflow", {
+  //   to: {
+  //     subscriberId: sId ,
+  //   },
+  //   payload: {
+  //     // subject: subj, // Replace {{payload.subject}} with this value
+  //     // body: `From ${fromName}: \n ${msg}`, // Replace {{payload.body}} with this value
+  //     // primaryActionLabel: "Take Action", // Example value
+  //     // secondaryActionLabel: "Ignore", // Example value
 
-      // "subject": "{{payload.subject}}",
-      // "body": "{{payload.body}}",
-      // "primaryActionLabel": "{{payload.primaryActionLabel}}",
-      // "secondaryActionLabel": "{{payload.secondaryActionLabel}}"
+  //     // "subject": "{{payload.subject}}",
+  //     // "body": "{{payload.body}}",
+  //     // "primaryActionLabel": "{{payload.primaryActionLabel}}",
+  //     // "secondaryActionLabel": "{{payload.secondaryActionLabel}}"
 
-      "subject": `${subj}`,
-      "body": `From ${fromName}, ${msg}`,
-      "primaryActionLabel": "Ok",
-      "secondaryActionLabel": "✅"
-    },
-  });
+  //     "subject": `${subj}`,
+  //     "body": `From ${fromName}, ${msg}`,
+  //     "primaryActionLabel": "Ok",
+  //     "secondaryActionLabel": "✅"
+  //   },
+  // });
 };
 
 
